@@ -5,7 +5,7 @@ let numeroMaximo = 10;
 let intentosMaximos = 5;
 
 // definición de función >> encapsulamiento de una acción que se quiere hacer
-function exibeMensajeInicial (elemento, texto) {
+function exhibeMensajeInicial (elemento, texto) {
     let elementoHTML = document.querySelector(elemento);
     elementoHTML.innerHTML = texto;
     return;
@@ -16,7 +16,7 @@ function verificarIntento () {
       document.getElementById("valorUsuario").value
     );
     if(numeroDelUsuario === numeroSecreto) {
-        exibeMensajeInicial(
+        exhibeMensajeInicial(
           ".texto__parrafo",
           `¡Has acertado el número en ${contadorDeIntentos} ${(contadorDeIntentos > 1) ? "intentos": "intento"}!`
         );
@@ -24,19 +24,19 @@ function verificarIntento () {
     } else {
         // si el usuario no acertó:
         if(numeroDelUsuario > numeroSecreto) {
-            exibeMensajeInicial(
+            exhibeMensajeInicial(
             ".texto__parrafo",
             "¡Déjame darte una pista! El número secreto es menor"
             );
         } else {
-            exibeMensajeInicial(
+            exhibeMensajeInicial(
             ".texto__parrafo",
             "¡Déjame darte una pista! El número secreto es mayor"
             );
         }
         contadorDeIntentos++;
         if(contadorDeIntentos > intentosMaximos) {
-            exibeMensajeInicial(".texto__parrafo", "Has alcanzado el número de intentos :(");
+            exhibeMensajeInicial(".texto__parrafo", "Has alcanzado el número de intentos :(");
             document.getElementById("reiniciar").removeAttribute("disabled");
         }
         inputReset();
@@ -54,7 +54,7 @@ function generaNumeroSecreto () {
     console.log(listaNumerosAleatorios);
     // verifica si ya se han sorteado todos los números posibles
     if (listaNumerosAleatorios.length == numeroMaximo) {
-      exibeMensajeInicial(
+      exhibeMensajeInicial(
         ".texto__parrafo",
         "Se han sorteado todos los números posibles."
       );
@@ -73,8 +73,8 @@ function generaNumeroSecreto () {
 }
 
 function condicionesIniciales () {
-    exibeMensajeInicial("h1", "¡Adivina el número secreto!");
-    exibeMensajeInicial(
+    exhibeMensajeInicial("h1", "¡Adivina el número secreto!");
+    exhibeMensajeInicial(
       ".texto__parrafo",
       `Indicame un número del 1 al ${numeroMaximo}`
     );
